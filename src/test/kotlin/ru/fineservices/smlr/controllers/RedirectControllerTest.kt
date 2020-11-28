@@ -25,16 +25,21 @@ class RedirectControllerTest {
 
     lateinit var mockMvc: MockMvc
 
+    private val PATH = "/aAbBcCdD"
+    private val REDIRECT_STATUS: Int = 302
+    private val HEADER_NAME = "Location"
+    private val HEADER_VALUE = "https://www.eveonline.com/"
+
+    private val BAD_PATH = "/trololotrololo"
+    private val NOT_FOUND: Int = 404
+
+    // Метод, который будет запускаться перед тестами,
+    // и инициализировать mockMvc
     @Before
     fun init() {
         println("method init()")
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build()
     }
-
-    private val PATH = "/aAbBcCdD"
-    private val REDIRECT_STATUS: Int = 302
-    private val HEADER_NAME = "Location"
-    private val HEADER_VALUE = "https://www.eveonline.com/"
 
     @Test
     fun controllerMustRedirectUsWhenRequestIsSuccessful() {
@@ -43,9 +48,6 @@ class RedirectControllerTest {
                 .andExpect(status().`is`(REDIRECT_STATUS))
                 .andExpect(header().string(HEADER_NAME, HEADER_VALUE))
     }
-
-    private val BAD_PATH = "/trololotrololo"
-    private val NOT_FOUND: Int = 404
 
     @Test
     fun controllerMustReturn404IfBadKey() {
