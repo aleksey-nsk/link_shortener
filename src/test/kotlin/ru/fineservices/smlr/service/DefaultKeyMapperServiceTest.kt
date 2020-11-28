@@ -1,30 +1,55 @@
 package ru.fineservices.smlr.service
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
+import org.junit.Before
 import org.junit.Test
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import ru.fineservices.smlr.service.impl.DefaultKeyMapperService
 
 class DefaultKeyMapperServiceTest {
 
+    private val KEY = "aAbBcCdD"
+    private val LINK_A = "https://www.google.ru/"
+    private val LINK_B = "https://www.yahoo.com/"
+    private val KEY_A = "abc"
+    private val KEY_B = "cde"
+    private val ID_A = 10_000_000L
+    private val ID_B = 10_000_001L
+
+    @InjectMocks
     val service: KeyMapperService = DefaultKeyMapperService()
 
-    private val KEY: String = "aAbBcCdD"
-    private val LINK: String = "https://www.eveonline.com/"
-    private val LINK_NEW: String = "https://wow.ru"
+    @Mock
+    lateinit var converter: KeyConverterService
 
-    @Test
-    fun clientCanAddNewKeyWithLink() {
-        println("Client Can Add New Key With Link")
-        assertEquals(KeyMapperService.Add.Success(KEY, LINK), service.add(KEY, LINK))
-        assertEquals(KeyMapperService.Get.Link(LINK), service.getLink(KEY))
+    @Before
+    fun init() {
+        println("Init")
+
+        MockitoAnnotations.initMocks(this)
+
+        Mockito.`when`(converter.keyToId(KEY_A)).thenReturn(ID_A)
+        Mockito.`when`(converter.idToKey(ID_A)).thenReturn(KEY_A)
+
+        Mockito.`when`(converter.keyToId(KEY_B)).thenReturn(ID_B)
+        Mockito.`when`(converter.idToKey(ID_B)).thenReturn(KEY_B)
     }
 
     @Test
-    fun clientCanNotAddExistingKey() {
-        println("Client Can Not Add Existing Key")
-        service.add(KEY, LINK)
-        assertEquals(KeyMapperService.Add.AlreadyExist(KEY), service.add(KEY, LINK_NEW))
-        assertEquals(KeyMapperService.Get.Link(LINK), service.getLink(KEY))
+    fun clientCanAddLinks() {
+        println("Client Can Add Links")
+
+        val keyA = service.add(LINK_A)
+        assertEquals(KeyMapperService.Get.Link(LINK_A), service.getLink(keyA))
+
+        val keyB = service.add(LINK_B)
+        assertEquals(KeyMapperService.Get.Link(LINK_B), service.getLink(keyB))
+
+        assertNotEquals(keyA, keyB)
     }
 
     @Test
