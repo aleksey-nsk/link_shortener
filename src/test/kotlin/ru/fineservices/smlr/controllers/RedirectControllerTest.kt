@@ -21,7 +21,7 @@ import ru.fineservices.smlr.SmlrApplication
 import ru.fineservices.smlr.service.KeyMapperService
 
 @RunWith(SpringJUnit4ClassRunner::class)
-@SpringBootTest(classes = arrayOf(SmlrApplication::class))
+@SpringBootTest(classes = [SmlrApplication::class])
 @WebAppConfiguration
 class RedirectControllerTest {
 

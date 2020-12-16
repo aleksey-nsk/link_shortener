@@ -18,7 +18,7 @@ class RedirectController {
         private val HEADER_NAME = "Location"
     }
 
-    @RequestMapping()
+    @RequestMapping
     fun redirect(@PathVariable("key") key: String, response: HttpServletResponse) {
         println("method redirect()")
         println("  key: '$key'")
