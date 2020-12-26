@@ -1,14 +1,15 @@
 package ru.fineservices.smlr.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType.AUTO
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
+import javax.persistence.GenerationType.SEQUENCE
 
 @Entity
 @Table(name = "links")
 data class Link(
         var text: String = "",
-        @Id @GeneratedValue(strategy = AUTO) var id: Long = 0
+
+        @Id
+        @GeneratedValue(strategy = SEQUENCE, generator = "links_sequence")
+        @SequenceGenerator(name = "links_sequence", sequenceName = "links_seq")
+        var id: Long = 0
 )
