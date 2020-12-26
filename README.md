@@ -19,3 +19,6 @@
 Создал репозиторий LinkRepository, и тесты для репозитория.
 Класс AbstractRepositoryTest служит для поднятия контекста.
 Используется нерабочая БД.
+
+5. Установил Docker, добавил контейнер с PostgreSQL.
+В итоге использую PostgreSQL и Liquibase.
