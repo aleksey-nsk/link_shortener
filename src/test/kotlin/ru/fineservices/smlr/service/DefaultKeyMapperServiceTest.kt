@@ -8,7 +8,11 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
+import ru.fineservices.smlr.model.Link
+import ru.fineservices.smlr.model.repositories.LinkRepository
 import ru.fineservices.smlr.service.impl.DefaultKeyMapperService
+import ru.fineservices.smlr.whenever
+import java.util.*
 
 class DefaultKeyMapperServiceTest {
 
@@ -19,12 +23,17 @@ class DefaultKeyMapperServiceTest {
     private val KEY_B = "cde"
     private val ID_A = 10_000_000L
     private val ID_B = 10_000_001L
+    private val LINK_OBJ_A = Link(LINK_A, ID_A)
+    private val LINK_OBJ_B = Link(LINK_B, ID_B)
 
     @InjectMocks
     val service: KeyMapperService = DefaultKeyMapperService()
 
     @Mock
     lateinit var converter: KeyConverterService
+
+    @Mock
+    lateinit var repo: LinkRepository
 
     @Before
     fun init() {
@@ -37,6 +46,12 @@ class DefaultKeyMapperServiceTest {
 
         Mockito.`when`(converter.keyToId(KEY_B)).thenReturn(ID_B)
         Mockito.`when`(converter.idToKey(ID_B)).thenReturn(KEY_B)
+
+        whenever(repo.findById(Mockito.anyObject())).thenReturn(Optional.empty())
+        whenever(repo.save(Link(LINK_A))).thenReturn(LINK_OBJ_A)
+        whenever(repo.save(Link(LINK_B))).thenReturn(LINK_OBJ_B)
+        whenever(repo.findById(ID_A)).thenReturn(Optional.of(LINK_OBJ_A))
+        whenever(repo.findById(ID_B)).thenReturn(Optional.of(LINK_OBJ_B))
     }
 
     @Test
