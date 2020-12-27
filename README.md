@@ -22,3 +22,5 @@
 
 5. Установил Docker, добавил контейнер с PostgreSQL.
 В итоге использую PostgreSQL и Liquibase.
+
+6. Создал контроллер AddController для добавления ссылки в систему.
