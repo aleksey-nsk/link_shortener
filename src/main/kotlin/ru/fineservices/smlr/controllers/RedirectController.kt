@@ -8,7 +8,7 @@ import ru.fineservices.smlr.service.KeyMapperService
 import javax.servlet.http.HttpServletResponse
 
 @Controller
-@RequestMapping("/{key}")
+@RequestMapping
 class RedirectController {
 
     @Autowired
@@ -18,7 +18,10 @@ class RedirectController {
         private val HEADER_NAME = "Location"
     }
 
-    @RequestMapping
+    @RequestMapping("/")
+    fun home() = "home"
+
+    @RequestMapping("/{key}")
     fun redirect(@PathVariable("key") key: String, response: HttpServletResponse) {
         println("method redirect()")
         println("  key: '$key'")
