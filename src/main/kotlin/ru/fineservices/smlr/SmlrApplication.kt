@@ -10,3 +10,4 @@ class SmlrApplication
 fun main(args: Array<String>) {
 	runApplication<SmlrApplication>(*args)
 }
+
