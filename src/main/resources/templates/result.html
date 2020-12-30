@@ -14,8 +14,10 @@
     <div class="page-header">
         <h1>Ваша ссылка уменьшена!</h1>
     </div>
+
     <p>Сперва она была такой - <a th:href="${link}" th:text="${link}"></a></p>
-    <p>А наш сервис превратил ее в такую - <a th:href="${keyed}" th:text="${keyed}"></a></p>
+    <p>А наш сервис превратил её в такую - <a th:href="${keyed}" th:text="${keyed}"></a></p>
+
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Скопируйте ссылку отсюда</span>
         <input th:autofocus="${true}" type="text" class="form-control" readonly="readonly"

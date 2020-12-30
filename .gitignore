@@ -26,3 +26,6 @@ test_reports/
 
 # Allure Report
 allure-report/
+
+# Other
+/.attach_*
