@@ -30,5 +30,6 @@
 Подправил сервис.
 
 7. Создал простой Web UI.
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/01_verstka.png)
 
 8. Использую Travis CI. Подключаю codecov.
