@@ -2,34 +2,36 @@
 [![codecov](https://codecov.io/gh/aleksey-nsk/link_shortener/branch/master/graph/badge.svg?token=GU31JRCDMH)](https://codecov.io/gh/aleksey-nsk/link_shortener)
 
 ## SMLR project (link SMaLleR):
-1. Сервис, который укорачивает длинные ссылки
-2. Написан на **Kotlin + Spring**
-
-## Что было использовано:
-- Spring Boot
-- Thymeleaf
+- Сервис, который укорачивает длинные ссылки
+- Написан на **Kotlin + Spring**
 
 ## Реализованный функционал:
-1. **Proof of concept.**
-Начальный минимум: пусть вэб-сервис переадресовывает запрос на какую-то другую страницу.
-Начинаю с написания теста (использую TDD).
+1. Использую TDD.
 
-2. Создал сервис, который осуществляет маппинг ключа в ссылку.
+2. Установил Docker, добавил контейнер с БД PostgreSQL.
 
-3. Объявил интерфейс конвертера, написал тесты к конвертеру, реализовал конвертер.
+3. Создал простой Web UI:
 
-4. Использую DBUnit и H2.
-Создал репозиторий LinkRepository, и тесты для репозитория.
-Класс AbstractRepositoryTest служит для поднятия контекста.
-Используется нерабочая БД.
-
-5. Установил Docker, добавил контейнер с PostgreSQL.
-В итоге использую PostgreSQL и Liquibase.
-
-6. Создал контроллер AddController для добавления ссылки в систему.
-Подправил сервис.
-
-7. Создал простой Web UI.
 ![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/01_verstka.png)
 
-8. Использую Travis CI. Подключаю codecov.
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/02_verstka.png)
+
+4. Использую Travis CI для непрерывной интеграции. Конфиг:
+
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/03_config_for_travis_ci.png)
+
+Сборка на Travis CI:
+
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/04_build_on_travis_ci.png)
+
+Настроил отправку отчётов на email:
+
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/05_report_to_email.png)
+
+5. Для проверки покрытия проекта тестами использую сервис Codecov:
+
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/06_test_coverage_on_codecov.png)
+
+6. Собранный в итоге образ контейнера размещаю в публичном репозитории Docker Hub:
+
+![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/07_container_image_on_docker_hub.png)
