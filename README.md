@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/aleksey-nsk/link_shortener.svg?branch=master)](https://travis-ci.org/aleksey-nsk/link_shortener)
+[![codecov](https://codecov.io/gh/aleksey-nsk/link_shortener/branch/master/graph/badge.svg?token=GU31JRCDMH)](https://codecov.io/gh/aleksey-nsk/link_shortener)
+
 ## SMLR project (link SMaLleR):
 1. Сервис, который укорачивает длинные ссылки
 2. Написан на **Kotlin + Spring**
