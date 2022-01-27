@@ -35,4 +35,3 @@
 6. **Собранный в итоге образ контейнера размещаю в публичном репозитории Docker Hub**:
 
 ![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/07_container_image_on_docker_hub.png)
-
