@@ -123,4 +123,4 @@ smlr связываться с контейнером с БД:
 ![](https://github.com/aleksey-nsk/link_shortener/blob/master/screenshots/12_test_app.png)  
 
 6. Данный файл **docker-compose.yml** можно запускать на разных серверах. Его можно хранить
-в приватном репозитории на **Bitbucket**. В данном случае положили этот файл в папку **docker/docker-compose.yml**
+в приватном репозитории. В данном случае положили этот файл в папку **docker/docker-compose.yml**
